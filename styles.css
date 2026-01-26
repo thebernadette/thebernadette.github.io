@@ -1,0 +1,349 @@
+/* ===== FONTS ===== */
+@font-face {
+    font-family: 'coconat';
+    src: url('fonts/coconat-main/fonts/Coconat-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'absans';
+    src: url('fonts/absans-main/fonts/Absans-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    box-sizing: border-box; /* prevent padding/margin from causing overflow */
+    margin: 0;
+    padding: 0;
+    cursor: default;
+}
+
+html, body {
+    overflow-x: hidden; /* remove horizontal scroll */
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+
+body {
+    background-image: url("img/BERNADETTE_MOUNTAINS.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'absans', sans-serif;
+
+    background-color:#1d3046;
+}
+
+
+
+a {
+  text-decoration: none; /* no underline */
+  color: #fff;
+}
+
+
+/* ===== HEADINGS ===== */
+h1 {
+    font-family: 'coconat', serif;
+    font-size: clamp(7rem, 6vw, 10.5rem);
+}
+
+/* ===== NAVIGATION ===== */
+.top-nav {
+    position: fixed;
+    top: 0;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    z-index: 1000;
+}
+
+button {
+  /* Variables */
+  --button_radius: 0.75em;
+  --button_color: rgba(255, 255, 255, 0.25);
+  --button_outline_color:#334d6d;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: 'coconat';
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+
+}
+
+.top-nav button {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.75em 1.5em;
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+.top-nav button:hover{
+  transform: translateY(-0.33em);
+}
+
+.top-nav button:active {
+  transform: translateY(0);
+}
+
+
+/* ===== SECTIONS ===== */
+.section {
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 100vh;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+#about {
+    font-family: 'coconat';
+    font-size: 4em;
+}
+
+svg {
+    overflow: visible;
+}
+
+svg text {
+    stroke: #1d3046;
+    stroke-width: 1;
+    fill: transparent;
+    stroke-dasharray: 650;
+    stroke-dashoffset: 650;
+    
+    font-size: 2em; 
+    transition: fill 1s ease-out;
+
+}
+    
+@keyframes draw {
+    90% { stroke-dashoffset: 30; }
+    100% {
+        stroke-dashoffset: 0;
+        fill:#1d3046;
+    }
+    
+}
+
+
+#contact h2 {
+    font-size: 4em;
+    /* text-align: left; */
+    padding-left: 1em;
+    padding-top: 25%;
+    font-family: 'coconat';
+    color: #fff;
+    
+}
+
+#contact {
+    display: flex;
+    gap: 10px;
+}
+
+.flex-box {
+  flex: 1;
+  align-items: center;
+}
+
+#services h2 {
+    font-family: 'coconat';
+    font-size: 4em;
+}
+
+#services #life {
+    color: white;
+}
+
+
+#services {
+    align-content: center;
+}
+
+
+#magic-text {
+  display: inline-block;
+  transition: color 0.15s ease;
+}
+
+
+.foot {
+  background-color:#1d3046;
+  min-height: 15em;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  color: #fff;
+  padding-left: 3em;
+}
+
+.foot .flex-box {
+  flex: 0;
+}
+
+
+.foot h4 {
+    font-family: 'coconat';
+    font-size: 2em;
+    padding-bottom: 1em;
+    white-space: nowrap;
+}
+
+.foot p {
+    font-family: 'absans';
+}
+
+.foot p a:hover {
+    color:#4293ef;
+    cursor: pointer;
+}
+
+.foot a:hover {
+    cursor: pointer;
+}
+
+
+.foot img {
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+#main .cursor, #main .circle {
+    width:1em;
+    height: 1em;
+    background-color: #fff;
+
+}
+
+
+
+
+
+
+/*
+Source - https://stackoverflow.com/a
+Posted by Blowsie, modified by community. See post 'Timeline' for change history
+Retrieved 2026-01-26, License - CC BY-SA 4.0
+*/
+
+body {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+
+
+
+
+
+
+
+
+/* #about .from-left {
+    animation: SlideFromLeft ease-in;
+    animation-timeline: view();
+    animation-duration: 3s;
+
+}
+
+.timeline-item:nth-child(1) {
+    animation-range: entry 20% cover 40%;
+}
+
+@keyframes SlideFromLeft {
+    from {
+        transform: translateX(-50%);
+        opacity: 0;
+    } to {
+       
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+}
+
+#about .from-right {
+    animation: SlideFromRight ease-in;
+    animation-timeline: view();
+    animation-duration: 3s;
+
+}
+
+.timeline-item:nth-child(1) {
+    animation-range: entry 20% cover 40%;
+}
+
+@keyframes SlideFromRight {
+    from {
+        transform: translateX(75%);
+        opacity: 0;
+    } to {
+       
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    
+} */
+
+
+
+
+
+/* ===== CARDS ===== */
+.cards {
+    display: flex;
+    flex-wrap: wrap; /* wrap cards on smaller screens */
+    gap: 1rem;
+    justify-content: center;
+    max-width: 100%; /* prevent flex overflow */
+}
+
+.card {
+    padding: 20px;
+    background: #e9e9e9;
+    border-radius: 8px;
+    width: 200px;
+    flex-shrink: 0; /* prevent shrinking weirdly */
+}
+
+/* ===== RESPONSIVE TWEAKS ===== */
+@media (max-width: 500px) {
+    .card {
+        width: 100%; /* stack cards on small screens */
+    }
+}
