@@ -10,7 +10,8 @@ const sr = ScrollReveal({
 
 // Animate different elements on scroll
 sr.reveal(".hero .reveal", { origin: "bottom", interval: 200 });
-sr.reveal("#about .reveal", { origin: "right", interval: 200 });
+sr.reveal("#about .reveal-left", { origin: "right", interval: 200 });
+sr.reveal("#about .reveal-right", { origin: "left", interval: 200 });
 sr.reveal("#services .reveal", { origin: "top", interval: 200 });
 sr.reveal("#services .reveal2", { origin: "bottom", interval: 200 });
 sr.reveal("#contact .reveal", { origin: "left", interval: 200 });

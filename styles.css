@@ -157,20 +157,21 @@ button {
 #about {
     font-family: 'coconat';
     font-size: 4em;
-    align-content: center;
+    align-content: start;
     margin: auto;
 }
 
-#about svg {
+#about h2 {
   width: clamp(320px, 90vw, 1000px);
   height: auto;
   display: block;
   margin: auto;
   overflow: visible;
   padding-left: 0.25em;
+
 }
 
-#about svg text {
+#about h2 {
   font-family: 'coconat', serif;
   font-size: clamp(2.8rem, 8vw, 6rem);
   fill: transparent;
@@ -179,6 +180,7 @@ button {
   stroke-dasharray: 650;
   stroke-dashoffset: 650;
   transition: fill 1s ease-out;
+  text-align: left;
 }
     
 @keyframes draw {
@@ -200,7 +202,7 @@ button {
 
 
 #services {
-    align-content: center;
+    align-content: start;
     color: #fff;
 }
 
