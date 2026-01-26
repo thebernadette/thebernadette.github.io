@@ -281,8 +281,9 @@ button {
   width: 200px;
   height: 200px;
   max-width: 100%;
-  display: flex;
+  display:flex;
   border-radius: 15px;
+  object-fit: cover;
 }
 .foot #credit {
     color:#9a9a9a;
