@@ -39,6 +39,60 @@ texts.forEach(text => observer.observe(text));
 
 
 
+// mobile ??? 
+
+function setVH() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight}px`);
+}
+setVH();
+window.addEventListener('resize', setVH);
+
+
+
+// nav toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  console.log('Nav toggle found:', !!navToggle);
+  console.log('Nav links found:', !!navLinks);
+  
+  if (!navToggle || !navLinks) {
+    console.error('ERROR: .nav-toggle or .nav-links not found!');
+    return;
+  }
+  
+  navToggle.addEventListener('click', function() {
+    if (navLinks.classList.contains('open')) {
+      // CLOSING: Force exit animations first
+      closeMenu();
+    } else {
+      // OPENING
+      navLinks.classList.add('open');
+      navToggle.classList.add('active');
+      navToggle.setAttribute('aria-expanded', 'true');
+    }
+  });
+  
+  function closeMenu() {
+    // Trigger exit animations
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+    
+    // Force reflow so exit animations play
+    navLinks.offsetHeight;
+  }
+  
+  // Close on link click
+  navLinks.addEventListener('click', function(event) {
+    if (event.target.closest('a')) {
+      closeMenu();
+    }
+  });
+});
+
+
 
 
 

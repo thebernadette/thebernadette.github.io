@@ -37,7 +37,11 @@ body {
     font-family: 'absans', sans-serif;
 
     background-color:#1d3046;
+
+    margin: auto;
 }
+
+
 
 
 
@@ -73,13 +77,15 @@ button {
   font-weight: bold;
   font-family: 'coconat';
   border: none;
-  cursor: pointer;
   border-radius: var(--button_radius);
   background: var(--button_outline_color);
+  cursor: pointer;
+  color: #fff;
 
 }
 
-.top-nav button {
+
+.nav-links button {
   display: block;
   box-sizing: border-box;
   border: 2px solid var(--button_outline_color);
@@ -89,14 +95,43 @@ button {
   color: var(--button_outline_color);
   transform: translateY(-0.2em);
   transition: transform 0.1s ease;
+
+  padding: 1rem 2rem;  
+  margin: 1rem 0.5rem;    /* space around buttons */
+  min-height: 3rem;   
+  color: white; 
+
 }
+
+.nav-links a {
+    color:#fff;
+}
+
 
 .top-nav button:hover{
   transform: translateY(-0.33em);
+
 }
 
 .top-nav button:active {
   transform: translateY(0);
+}
+
+.nav-toggle {
+  display: none;            /* hidden on desktop */
+  background: none;
+  border: none;
+}
+
+/* Remove any “X” transform effects on desktop */
+.nav-toggle .nav-toggle-bar {
+  transform: none;
+  opacity: 1;
+}
+
+/* Desktop nav links visible */
+.nav-links {
+  display: flex;
 }
 
 
@@ -122,22 +157,28 @@ button {
 #about {
     font-family: 'coconat';
     font-size: 4em;
+    align-content: center;
+    margin: auto;
 }
 
-svg {
-    overflow: visible;
+#about svg {
+  width: clamp(320px, 90vw, 1000px);
+  height: auto;
+  display: block;
+  margin: auto;
+  overflow: visible;
+  padding-left: 0.25em;
 }
 
-svg text {
-    stroke: #1d3046;
-    stroke-width: 1;
-    fill: transparent;
-    stroke-dasharray: 650;
-    stroke-dashoffset: 650;
-    
-    font-size: 2em; 
-    transition: fill 1s ease-out;
-
+#about svg text {
+  font-family: 'coconat', serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  fill: transparent;
+  stroke: #1d3046;
+  stroke-width: 1;
+  stroke-dasharray: 650;
+  stroke-dashoffset: 650;
+  transition: fill 1s ease-out;
 }
     
 @keyframes draw {
@@ -148,6 +189,21 @@ svg text {
     }
     
 }
+#services h2 {
+    font-family: 'coconat';
+    font-size: 4em;
+}
+
+#services #life {
+    color: #6fbeff;
+}
+
+
+#services {
+    align-content: center;
+    color: #fff;
+}
+
 
 
 #contact h2 {
@@ -162,48 +218,40 @@ svg text {
 
 #contact {
     display: flex;
+    flex-direction: inherit;
     gap: 10px;
 }
+
+
 
 .flex-box {
   flex: 1;
   align-items: center;
 }
 
-#services h2 {
-    font-family: 'coconat';
-    font-size: 4em;
-}
 
-#services #life {
-    color: white;
-}
-
-
-#services {
-    align-content: center;
-}
-
-
-#magic-text {
-  display: inline-block;
-  transition: color 0.15s ease;
-}
 
 
 .foot {
-  background-color:#1d3046;
+  background-color: #1d3046;
   min-height: 15em;
   display: flex;
   align-items: center;
+  justify-content: center; /* center content horizontally */
   gap: 3rem;
   color: #fff;
-  padding-left: 3em;
+  padding: 5% 5% 10% 5%; /* keeps top/bottom/right/left padding consistent */
+  flex-wrap: wrap; /* allows mobile stacking without overflow */
 }
 
 .foot .flex-box {
-  flex: 0;
+  flex: 1;
+  align-content: center;
+  min-width: 200px; /* optional: prevent collapsing too small */
+  flex-direction: row;
 }
+
+
 
 
 .foot h4 {
@@ -228,9 +276,34 @@ svg text {
 
 
 .foot img {
-    object-fit: cover;
-    border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+  display: flex;
+  border-radius: 15px;
 }
+.foot #credit {
+    color:#9a9a9a;
+    justify-content: flex-end;
+}
+
+.foot #credit a {
+    color:#4293ef;
+    justify-content: flex-end;
+}
+
+.foot #credit a:hover {
+    color:#f8cc1e;
+    cursor: pointer;
+}
+
+
+.foot .flex-box:first-child {
+  flex: 0 0 200px; /* fixed width for the image box */
+  max-width: 200px; /* prevents it from growing too much */
+}
+
+
 
 ul {
     list-style-type: none;
@@ -347,3 +420,215 @@ body {
         width: 100%; /* stack cards on small screens */
     }
 }
+
+
+/* MOBILE ? */
+/* Existing root and base */
+:root {
+  --vh: 100vh;
+}
+
+.section,
+.hero {
+  min-height: calc(var(--vh) * 1);
+}
+
+body {
+  background-attachment: scroll; /* NEVER fixed on mobile */
+}
+
+/* ===== ORIENTATION FIXES ===== */
+@media (orientation: portrait) {
+  #contact,
+  .foot {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+
+  #contact h2 {
+    padding-top: 2rem;
+  }
+
+  #contact {
+    flex-direction: column;
+    align-content: center;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .section {
+    padding: 60px 20px;
+  }
+}
+
+/* ===== GENERAL MOBILE (≤768px) ===== */
+@media (max-width: 768px) {
+  #contact {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #contact h2 {
+    padding-top: 2rem;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .foot {
+    padding: 3em 1.5em 3em 1.5em; /* same left/right */
+    flex-direction: column;
+    align-items: center;          /* center flex items horizontally */
+    text-align: center;
+    gap: 1.5rem;                  /* slightly smaller gap for stacked layout */
+  }
+
+  h1 {
+    font-size: clamp(3rem, 10vw, 4.5rem);
+  }
+
+
+
+  .foot .flex-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;          /* center content inside each block */
+  }
+
+  .top-nav {
+    justify-content: space-between;
+    padding: 1rem;
+    
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 1rem 1rem;
+    z-index: 999;
+    color: white;
+
+  }
+
+  .nav-links.open {
+    display: flex;
+    color: white;
+  }
+
+  /* Button base state - ready for slide-in */
+  .nav-links button {
+    width: 200px;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    justify-content: flex-start;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation-fill-mode: both;
+  }
+
+  /* Staggered entrance - overlapping intervals (OPENING ONLY) */
+  .nav-links.open button:nth-child(1) { 
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s forwards; 
+    color: white;
+  }
+  .nav-links.open button:nth-child(2) { 
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s forwards; 
+  }
+  .nav-links.open button:nth-child(3) { 
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s forwards; 
+  }
+  .nav-links.open button:nth-child(4) { 
+    animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.35s forwards; 
+  }
+
+
+  /* Slide-in keyframe */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+   @keyframes slideOut {
+    from {
+      opacity: 0;
+      transform: translateX(0px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-30px);
+    }
+  }
+
+  /* Hamburger bar animations */
+  .nav-toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+    background-color: #fff;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  }
+
+  .nav-toggle.active .nav-toggle-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .nav-toggle.active .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active .nav-toggle-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+
+
+
+}
+
+/* ===== SMALL MOBILE (≤600px) ===== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: clamp(3rem, 10vw, 4.5rem);
+  }
+
+  #about,
+  #services h2,
+  #contact h2 {
+    font-size: 2.5rem;
+  }
+
+  #services h2,
+  #contact h2 {
+    font-size: 2.5rem;
+  }
+
+  /* SVG sizing fixes on mobile */
+  #about svg {
+    width: 100%;
+    height: auto;
+    min-height: 200px; /* adjust to taste */
+    padding-right: 2%;
+  }
+}
+
+
